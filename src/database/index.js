@@ -10,4 +10,7 @@ const client = new Client({
 
 client.connect();
 
-client.query('SELECT * FROM contacts').then((result) => console.log(result));
+exports.query = async (query, values) => {
+  const { rows } = await client.query(query, values);
+  return rows;
+};
